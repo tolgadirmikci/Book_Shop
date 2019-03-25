@@ -1,0 +1,155 @@
+﻿@model Book_Shop.Models.Book
+@{
+    ViewBag.Title = "DetailsBook";
+    Layout = "~/Views/Shared/User_Layout/_UserLayout.cshtml";
+}
+
+
+
+<hr />
+<section id="topic-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Book Details</h1>
+                <p></p>
+            </div>	<!-- /.col-md-4 -->
+            <div class="col-md-8 hidden-xs">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li class="active">Single Products</li>
+                </ol>
+            </div> <!-- /.col-md-8 -->
+        </div>	<!-- /.row -->
+    </div>	<!-- /.container-->
+</section><!-- /Section -->
+
+
+
+
+<section id="single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="@Model.BookPhotoPath" style="width:450px;height:327px" alt="">
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-lg-push-4">
+                        <a class="view-link shutter" id="likeBtn" name="likeBtn"><i class="fa fa-thumbs-o-up" id="output"> 0</i></a>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- End of /.col-md-5 -->
+            <div class="col-md-4">
+                <div class="block">
+                    <div class="product-des">
+                        <h4>@Model.BookName</h4>
+                        <p class="price">@Model.BookPrice TL</p>
+                        <p><b>Book Info:</b>@Model.BookSummary<br /><b>Author Info:</b>@Model.Author.AuthorInfo<br />
+                        <b>Author Name:</b>@Model.Author.AuthorName<br /><b>ISBN No:</b>@Model.BookIsbnNo<br /><b>Category Name:</b>@Model.Category.CategoryName
+                        </p>
+                        <a class="view-link" href="@Url.Action("CustomerOrder","Home",new { id=Model.Id})"><i class="fa fa-plus-circle"></i>Buy This Book</a>
+                    </div>	<!-- End of /.product-des -->
+                </div> <!-- End of /.block -->
+            </div>	<!-- End of /.col-md-4 -->
+            <div class="col-md-3">
+                <div class="blog-sidebar">
+                    <div class="block">
+                        <h4>Catagories</h4>
+                        <div class="list-group">
+                            <a href="@Url.Action("Index","Home")" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                All Books
+                            </a>
+                            @foreach (var item in ViewData["categories"] as List<Book_Shop.Models.Category>)
+                            {
+                                <a href="/Home/BookCategoryFilter/@item.Id" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    @item.CategoryName (@item.Books.Count)
+                                </a>
+                            }
+                           
+                       
+                        </div>
+
+                    </div>	<!-- End of /.blog-sidebar -->
+
+            </div>	<!-- End of /.col-md-3 -->
+        </div>	<!-- End of /.row -->
+
+        <!--Comment Form-->
+        <div class="row">
+            <div class="col-md-9">
+    
+            <h5 >Leave a Comment</h5>
+            <div >
+                @using (Html.BeginForm("DetailsBook", "Home", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        @Html.TextArea("commentText", null, new { @class = "form-control", rows = 3, placeholder = "Enter Your Comment" })<br />
+                        <div class="col-md-4">
+                            <div class="row">
+                                <input type="text" name="commenterName" class="form-control" placeholder="Enter Your Name" /><br />
+                                <button type="submit" class="btn btn-success"><i class="fa fa-send-o"> Submit</i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+             
+               
+            </div>
+          </div>	<!-- End of /.col-md-9 -->
+
+            <!--Comment Text'leri döndüğüm kısım....-->
+           
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="page-header">
+                                <h1><small class="pull-right">@Model.Comments.Count Total Comments</small> Comments </h1>
+                            </div>
+                            <div class="comments-list">
+                            @foreach (var item in Model.Comments)
+                             {
+                                <div class="media">
+                                    <p class="pull-right"><small>5 days ago</small></p>
+                                    <a class="media-left" href="#">
+                                        <img src="http://lorempixel.com/40/40/people/1/">
+                                    </a>
+                                    <div class="media-body">
+
+                                        <h4 class="media-heading user_name">@item.CommenterName</h4>
+                                        @item.CommentText
+                                    </div>
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </div>
+                </div><!--Comment Text İçerik-->
+           
+         
+         <br />
+        </div>	<!-- End of /.row -->
+        <br />
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    </div>	<!-- End of /.Container -->
+      </div>
+</section> <!-- End of /.Single-product -->

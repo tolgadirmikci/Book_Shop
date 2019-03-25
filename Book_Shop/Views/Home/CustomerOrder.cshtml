@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "CustomerOrder";
+    Layout = "~/Views/Shared/User_Layout/_UserLayout.cshtml";
+}
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<hr />
+<h2 style="text-align:center">Customer Book Order Register Form</h2>
+
+    <div class="container">
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td colspan="1">
+                       
+                       @using (Html.BeginForm("CustomerOrder", "Home", FormMethod.Post, new { @class = "well form-horizontal" }))
+                       {
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Name</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="Name" name="Name" placeholder="Name" class="form-control" required="true" value="" type="text"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Surname</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="Surname" name="Surname" placeholder="Surname" class="form-control" required="true" value="" type="text"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Email</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input id="email" name="email" placeholder="Email" class="form-control" required="true" value="" type="text"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Address Line </label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input id="addressLine1" name="addressLine1" placeholder="Address Line 1" class="form-control" required="true" value="" type="text"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Phone Number</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control" required="true" value="" type="text"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-10">
+                                    @*<a href="@Url.Action("CustomerOrder","Home")" class="btn btn-primary">Confirm Order Book</a>*@
+                                    <input type="submit" value="Confirm Order Book" class="btn btn-primary" id="confirmBookMessage" />
+                                </div>
+                            </div>
+                        </fieldset>
+                       }
+                              
+                      
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+<script>
+    $(document).ready(function () {
+        $("#confirmBookMessage").click(function () {
+            alert("Your Order has been Successfully Completed");
+        })
+    })
+</script>
+

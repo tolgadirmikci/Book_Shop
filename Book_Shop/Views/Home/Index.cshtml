@@ -1,0 +1,66 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Book_Shop.Models.Book>
+
+
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/User_Layout/_UserLayout.cshtml";
+}
+
+<head>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+</head>
+
+<!-- PRODUCTS Start
+================================================== -->
+
+<section id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="products-heading">
+                    <h2>NEW BOOKS</h2>
+                </div>
+            </div>
+        </div>
+    <!--Modeli Dönücem Foreachle-->
+        <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="products">
+                    <a href="single-product.html">
+                        <img src="@item.BookPhotoPath" width="280" height="240" alt="">
+                    </a>
+                    <a href="single-product.html">
+                        <h4>@item.BookName</h4>
+                    </a>
+                    <p class="price">From: TL @item.BookPrice</p>
+                    <p style="font-size:large">Category: @item.Category.CategoryName</p>
+                    <p style="font-size:large">Author: @item.Author.AuthorName</p>
+                    <a class="view-link shutter" href="@Url.Action("DetailsBook","Home",new { id=item.Id})">
+                        <i class="fa fa-info-circle"></i>Go to Details
+                    </a>
+                </div>	<!-- End of /.products -->
+            </div>	<!-- End of /.col-md-3 -->
+        }
+          
+         </div>	<!-- End of /.row -->
+
+
+    </div>	<!-- End of /.container -->
+</section>	<!-- End of Section -->
+
+<div class="pagination-bottom">
+    @Html.PagedListPager(Model,Page=>Url.Action("Index",new { Page}),PagedListRenderOptions.Classic)
+</div>
+
+@*<script>
+    $('#target').click(function () {
+        $('#output').html(function (i, val) {
+            return val * 1 + 1
+        });
+    });
+</script>*@

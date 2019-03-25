@@ -1,0 +1,94 @@
+﻿@model Book_Shop.Models.Book
+
+@{
+    ViewBag.Title = "DetailsBook";
+    Layout = "~/Views/Shared/Admin_Layout/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard-Book Management</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div>
+        <h4>Book</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Author.AuthorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Author.AuthorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookSummary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookSummary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookIsbnNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookIsbnNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookPhotoPath)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookPhotoPath)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookQuantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookQuantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookPrice)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <a class="btn btn-warning" href="@Url.Action("EditBook", "AdminBookManagement", new { id = Model.Id })">
+            <i class="fa fa-edit"> Edit</i>
+        </a>
+        @*@Html.ActionLink("Edit", "EditBook", new { id = Model.Id })*@ |
+        <a class="btn btn-sm btn-default" style="color:bisque; background-color:crimson" href="@Url.Action("Index","AdminBookManagement")"><i class="fa fa-hand-o-left"></i> Go to List</a>
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </p>
+    </div>

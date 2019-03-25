@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Book_Shop.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard-Book Management</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorInfo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorInfo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

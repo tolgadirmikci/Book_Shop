@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Book_Shop.Models.Customer>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/Admin_Layout/_AdminLayout.cshtml";
+}
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard-Book Management</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <h2>Order List</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.LoginAuthName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.OrderBook)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.LoginAuthName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderBook)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-circle" href="@Url.Action("ConfirmAndDelete", "AdminOrder", new { id = item.Id })">
+                        <i class="fa fa-check"></i>
+                    </a> 
+                 
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+   </div>
